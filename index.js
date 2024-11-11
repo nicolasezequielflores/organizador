@@ -3,7 +3,66 @@ const btn = d.querySelector('.btn');
 const cardContainer = d.querySelector('.cardContainer');
 const entrada = d.getElementById('entrada');
 const validacion = d.querySelector('.val');
+const horaCont = d.querySelector('.hora__cont');
+
 let timeOut;
+
+//Horario
+
+
+const parrafo = d.createElement('p');
+parrafo.className = 'horario';
+parrafo.style.color = '#FFFCF7';
+
+function Reloj(){
+    const horario = new Date();
+    parrafo.innerHTML  = horario.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: ''});
+}
+Reloj();
+setInterval(Reloj, 1000);
+
+horaCont.appendChild(parrafo);
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Eventos
 btn.addEventListener('click', MostrarTexto);
@@ -11,7 +70,9 @@ entrada.addEventListener('input', Validacion);
 
 //Funcion para mostrar un mensaje de validacion cuando el text area este vacio
 function Validacion(){
-    
+
+    validacion.innerHTML = 'Agregar texto';
+
     //Validación del textarea
     if(entrada.value.trim() !== ''){
         validacion.className = 'val';
@@ -23,7 +84,7 @@ function Validacion(){
         clearTimeout(timeOut); //Limpia el setTimeout si existe.
         timeOut = setTimeout(() =>{
             validacion.className = 'val';
-        }, 5000);
+        }, 3000);
     }
 }
 
